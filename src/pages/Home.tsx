@@ -11,7 +11,8 @@ import { useGetChartsQuery } from "@/services/chartsApi";
 
 export function Home() {
   const { data, isLoading } = useGetAnalyticsQuery("");
-  const { data: chartsData } = useGetChartsQuery("");
+  const { data: chartsData, isLoading: isChartsLoading } =
+    useGetChartsQuery("");
 
   useBreadCrumb([
     {
@@ -25,35 +26,36 @@ export function Home() {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <>
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-            <InfoCard
-              icon={<UsersIcon />}
-              caption="Total Users"
-              value={data?.totalUsers}
-            />
-            <InfoCard
-              icon={<UsersIcon />}
-              caption="Active Users"
-              value={data?.activeUsers}
-            />
-            <InfoCard
-              icon={<AudioLinesIcon />}
-              caption="Total Streams"
-              value={data?.totalStreams}
-            />
-            <InfoCard
-              icon={<CircleDollarSignIcon />}
-              caption="Revenue"
-              value={data?.revenue}
-            />
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-2">
-            <UserChart data={chartsData?.userGrowthData} />
-            <RevenueChart data={chartsData?.revenueDistributionData} />
-          </div>
-        </>
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+          <InfoCard
+            icon={<UsersIcon />}
+            caption="Total Users"
+            value={data?.totalUsers}
+          />
+          <InfoCard
+            icon={<UsersIcon />}
+            caption="Active Users"
+            value={data?.activeUsers}
+          />
+          <InfoCard
+            icon={<AudioLinesIcon />}
+            caption="Total Streams"
+            value={data?.totalStreams}
+          />
+          <InfoCard
+            icon={<CircleDollarSignIcon />}
+            caption="Revenue"
+            value={data?.revenue}
+          />
+        </div>
+      )}
+      {isChartsLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="grid gap-5 lg:grid-cols-2">
+          <UserChart data={chartsData?.userGrowthData} />
+          <RevenueChart data={chartsData?.revenueDistributionData} />
+        </div>
       )}
     </div>
   );
