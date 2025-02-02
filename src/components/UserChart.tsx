@@ -8,13 +8,10 @@ import {
   ChartTooltipContent,
 } from "./ui/chart";
 
-import { TrendingUp } from "lucide-react";
-
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -86,15 +83,6 @@ export function UserChart({
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter>
-        <div className="flex items-start w-full gap-2 text-sm">
-          <div className="grid gap-2">
-            <div className="flex items-center gap-2 font-medium leading-none">
-              {/* Trending up by this month <TrendingUp className="w-4 h-4" /> */}
-            </div>
-          </div>
-        </div>
-      </CardFooter>
     </Card>
   );
 }
