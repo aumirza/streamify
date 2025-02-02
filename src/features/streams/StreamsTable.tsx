@@ -7,6 +7,8 @@ import {
   getSortedRowModel,
   ColumnFiltersState,
   getFilteredRowModel,
+  getPaginationRowModel,
+  PaginationState,
 } from "@tanstack/react-table";
 
 import {
@@ -32,6 +34,10 @@ export function StreamsTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 7,
+  });
 
   const table = useReactTable({
     data,
@@ -41,14 +47,17 @@ export function StreamsTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
     state: {
       sorting,
       columnFilters,
+      pagination,
     },
   });
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col w-full gap-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Input
@@ -63,7 +72,7 @@ export function StreamsTable<TData, TValue>({
           />
         </div>
       </div>
-      <div className="border rounded-lg bg-card">
+      <div className="overflow-x-auto border rounded-lg">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
