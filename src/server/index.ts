@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint no-use-before-define: 0 */ // --> OFF
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-
 import { createServer, Model, Factory } from "miragejs";
 import { faker } from "@faker-js/faker";
 
@@ -41,9 +39,9 @@ export function makeServer() {
       // Active Users: The number of users who have streamed at least one song in the last 30 days.
       // Total Streams: The total number of song streams on the platform.
       // Revenue: The total revenue generated from subscriptions and advertisements.
+
       this.get(
-        "/analytic",
-        // @eslint
+        "/analytics",
         (schema) => ({
           totalUsers: schema.users.all().length,
           activeUsers: schema.users.where({ isActive: true }).length,
