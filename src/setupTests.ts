@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
+import { beforeAll, afterEach } from "vitest";
 
 class IntersectionObserverMock {
-  constructor() // callback: IntersectionObserverCallback
-  // options?: IntersectionObserverInit
+  constructor() // options?: IntersectionObserverInit // callback: IntersectionObserverCallback
   {}
 
   observe() {

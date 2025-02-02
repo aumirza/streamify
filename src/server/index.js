@@ -4,10 +4,7 @@ import { faker } from "@faker-js/faker";
 export function makeServer() {
   return createServer({
     models: {
-      user: Model, // Todo: add relation
-      // stream: Model.extend({
-      //   user: belongsTo(),
-      // }),
+      user: Model,
       stream: Model,
     },
     factories: {
