@@ -13,6 +13,7 @@ export function DashboardLayout() {
             <Outlet />
           </div>
         </main>
+        <footer className="h-10"></footer>
       </div>
     </div>
   );
