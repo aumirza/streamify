@@ -1,59 +1,101 @@
 # Streamify
 
+Dashboard to analyse the data of music streaming.
+
 ## Directory Structure
 
-streamify-dashboard/
-│── public/ # Static assets (e.g., images, favicon)
-│── src/
-│ ├── api/ # API layer using RTK Query
-│ │ ├── apiSlice.js # RTK Query base API setup
-│ │ ├── streamsApi.js # API endpoints for streams
-│ │ ├── usersApi.js # API endpoints for users
+```bash
+
+├── public/ # Static assets (e.g., images, favicon)
+├── src/
+│ ├── __test__/
+│ ├── assets/
+│ ├── components/ # Reusable components
+│ │ ├── __test__/ # Test related to components
+│ │ │ └── InfoCard.test.tsx
+│ │ ├── ui/ # Reusable UI components
+│ │ │ ├── button.tsx
+│ │ │ ├── card.tsx
+│ │ │ ├── chart.tsx
+│ │ │ ├── home.tsx
+│ │ │ ├── input.tsx
+│ │ │ └── (......)
+│ │ │
+│ │ ├── Header.tsx
+│ │ ├── InfoCard.tsx
+│ │ ├── LoadingSpinner.tsx
+│ │ ├── RevenueChart.tsx
+│ │ ├── UserChart.tsx
+│ │ └── (.......)
 │ │
-│ ├── app/ # Redux store configuration
-│ │ ├── store.js # Root store configuration
+│ ├── features/
 │ │
-│ ├── components/ # Reusable UI components
-│ │ ├── Navbar.jsx
-│ │ ├── Sidebar.jsx
-│ │ ├── MetricsCard.jsx # Cards showing key stats
-│ │ ├── Chart.jsx # Wrapper for different charts
-│ │ ├── Table.jsx # Reusable table component
+│ ├── hooks/ # Custom hooks
+│ │ ├── use-mobile.tsx
+│ │ ├── useBreadCrumb.tsx
+│ │ └── (........)
 │ │
-│ ├── features/ # Redux slices and related logic
-│ │ ├── streams/ # Stream-related Redux logic
-│ │ │ ├── streamsSlice.js # Slice for streams
-│ │ │ ├── StreamsTable.jsx # Streams table component
-│ │ ├── users/ # User-related Redux logic
-│ │ │ ├── usersSlice.js # Slice for users
-│ │ │ ├── UsersList.jsx # Users list component
-│ │
-│ ├── hooks/ # Custom hooks for fetching data
-│ │ ├── useFetchStreams.js
-│ │ ├── useFetchUsers.js
-│ │
-│ ├── mirage/ # Fake API server using MirageJS
-│ │ ├── server.js # MirageJS setup
-│ │ ├── factories.js # Mirage factories for generating data
-│ │ ├── routes.js # API routes for MirageJS
-│ │ ├── seeds.js # Initial data seeding for MirageJS
+│ ├── lib/
+│ │ └── utils.ts
 │ │
 │ ├── pages/ # Page-level components
-│ │ ├── Dashboard.jsx # Main dashboard page
-│ │ ├── Streams.jsx # Streams analytics page
-│ │ ├── Users.jsx # Users analytics page
+│ │ ├── Home.tsx # Main dashboard page
+│ │ └── Streams.tsx # Streams analytics page
 │ │
-│ ├── styles/ # Global styles and themes
-│ │ ├── globals.css # Tailwind or custom styles
+│ ├── router/ #
+│ │ └── AppRoutes.tsx
+│ │
+│ ├── server/ # Fake API server
+│ │ └── index.ts # MirageJS setup
+│ │
+│ ├── services/
+│ │ ├── anlyticsApi.ts
+│ │ ├── streamsApi.ts
+│ │ └── usersApi.ts
+│ │
+│ ├── store/ # Redux store configuration
+│ │ └── index.ts
+│ │
+│ ├── types/
+│ │ ├── breadcrumb.d.ts
+│ │ └── stream.d.ts
 │ │
 │ ├── utils/ # Utility functions
-│ │ ├── formatDate.js # Function to format dates
-│ │ ├── calculateMetrics.js # Helper for dashboard calculations
 │ │
-│ ├── App.jsx # Root component
-│ ├── main.jsx # React entry point
-│ ├── config.js # App configuration (e.g., API base URL)
+│ ├── App.tsx # Root component
+│ ├── index.css # Tailwind styles
+│ ├── main.tsx # React entry point
+│ ├── setupTests.ts
+│ └── vite-env.d.ts
 │
-├── .gitignore
-├── package.json
 ├── README.md
+├── index.html
+├── components.json
+├── eslint.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
+
+# About
+
+- This is streamify dashboard app to view and analyse music streams
+- Buit using React with vite.
+
+# It uses:
+
+- **Redux toolit** for state management.
+- **RTK query** for querying / data fetching.
+- **React router** for routing.
+- **Motion** for animation.
+- **Recharts** for charts.
+- **Shadcn** for integrating components.
+- **Tailwind** for styling.
+- **React testing Library** for component testing.
+- **Vitest** for test runner and and testing framework.
+- **MirageJs** for mocking api or data source.
