@@ -1,6 +1,7 @@
 import { InfoCard } from "@/components/InfoCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import RevenueChart from "@/components/RevenueChart";
+import { TopStreamedSongs } from "@/components/TopStreamedSongs";
 import { AudioLinesIcon } from "@/components/ui/audio-lines";
 import { CircleDollarSignIcon } from "@/components/ui/circle-dollar-sign";
 import { UsersIcon } from "@/components/ui/users";
@@ -52,10 +53,13 @@ export function Home() {
       {isChartsLoading ? (
         <LoadingSpinner />
       ) : (
-        <div className="grid gap-5 lg:grid-cols-2">
-          <UserChart data={chartsData?.userGrowthData} />
+        <>
           <RevenueChart data={chartsData?.revenueDistributionData} />
-        </div>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <UserChart data={chartsData?.userGrowthData} />
+            <TopStreamedSongs data={chartsData?.top5} />
+          </div>
+        </>
       )}
     </div>
   );
