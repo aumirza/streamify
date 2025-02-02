@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { Label, Pie, PieChart } from "recharts";
-import { TrendingUp } from "lucide-react";
 
 import {
   Card,
@@ -12,6 +11,8 @@ import {
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
@@ -144,15 +145,17 @@ export default function RevenueChart({ data }: RevenueChartProps) {
                 }}
               />
             </Pie>
+            <ChartLegend content={<ChartLegendContent />} />
           </PieChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
+        {/* <div className="flex items-center gap-2 font-medium leading-none">
           Trending up by 5.2% this month <TrendingUp className="w-4 h-4" />
-        </div>
+        </div> */}
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Showing total visitors for the current{" "}
+          {timeFrame === "currentMonth" ? "month" : "quarter"}
         </div>
       </CardFooter>
     </Card>

@@ -1,7 +1,9 @@
-import { Line, LineChart } from "recharts";
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "./ui/chart";
@@ -61,15 +63,26 @@ export function UserChart({
           <LineChart accessibilityLayer data={chartData}>
             <ChartTooltip content={<ChartTooltipContent />} />
             <Line
-              fill="var(--color-totalUsers)"
+              stroke={chartconfig.activeUsers.color}
+              dot={{ fill: chartconfig.activeUsers.color }}
               type="monotone"
               dataKey="activeUsers"
-            ></Line>
+            />
             <Line
-              fill="var(--color-activeUsers)"
+              stroke={chartconfig.totalUsers.color}
+              dot={{ fill: chartconfig.totalUsers.color }}
               type="monotone"
               dataKey="totalUsers"
-            ></Line>
+            />
+            <CartesianGrid vertical={false} />
+            <ChartLegend content={<ChartLegendContent />} />
+            <XAxis
+              dataKey="month"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
           </LineChart>
         </ChartContainer>
       </CardContent>
@@ -77,7 +90,7 @@ export function UserChart({
         <div className="flex items-start w-full gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="w-4 h-4" />
+              {/* Trending up by this month <TrendingUp className="w-4 h-4" /> */}
             </div>
           </div>
         </div>
