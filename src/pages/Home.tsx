@@ -5,12 +5,20 @@ import { AudioLinesIcon } from "@/components/ui/audio-lines";
 import { CircleDollarSignIcon } from "@/components/ui/circle-dollar-sign";
 import { UsersIcon } from "@/components/ui/users";
 import { UserChart } from "@/components/UserChart";
+import { useBreadCrumb } from "@/hooks/useBreadCrumb";
 import { useGetAnalyticsQuery } from "@/services/anlyticsApi";
 import { useGetChartsQuery } from "@/services/chartsApi";
 
 export function Home() {
   const { data, isLoading } = useGetAnalyticsQuery("");
   const { data: chartsData } = useGetChartsQuery("");
+
+  useBreadCrumb([
+    {
+      name: "Home",
+      path: "/",
+    },
+  ]);
 
   return (
     <div className="flex flex-col gap-10">
